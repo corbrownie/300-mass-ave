@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>300 Mass Ave — Northeastern's Global Innovation Hub</title>
+<meta name="description" content="The world's first university-owned global innovation hub network. 300 Massachusetts Avenue, Boston. Launching November 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#070708;
+  --ink:#0c0c0f;
+  --panel:#101015;
+  --line:rgba(255,255,255,.10);
+  --fog:rgba(255,255,255,.55);
+  --white:#f6f4f1;
+  --crimson:#d41b2c;
+  --crimson-bright:#ff2a3d;
+  --quantum:#3df0d8;
+  --gold:#e9c46a;
+  --violet:#8b7dff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Inter',system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--crimson);color:#fff}
+
+/* ---------- Type ---------- */
+.serif{font-family:'Fraunces',Georgia,serif}
+.mono{font-family:'Space Mono',monospace}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.02;letter-spacing:-.02em}
+.eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--crimson-bright);font-weight:700;
+  display:inline-block;margin-bottom:1.4rem;
+}
+.eyebrow.q{color:var(--quantum)}
+p.lede{font-size:clamp(1.05rem,1.7vw,1.4rem);color:rgba(246,244,241,.78);font-weight:300;max-width:60ch}
+
+/* ---------- Layout ---------- */
+section{position:relative;padding:clamp(5rem,11vh,11rem) clamp(1.4rem,6vw,7rem)}
+.wrap{max-width:1280px;margin:0 auto}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+/* ---------- Nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.4rem,6vw,7rem);
+  transition:background .5s ease,backdrop-filter .5s ease,padding .5s ease,border-color .5s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(7,7,8,.72);backdrop-filter:blur(18px) saturate(140%);
+  border-bottom:1px solid var(--line);padding:.8rem clamp(1.4rem,6vw,7rem);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:700;letter-spacing:.02em;font-size:1.02rem}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--crimson-bright);box-shadow:0 0 14px var(--crimson-bright)}
+.brand span.sub{color:var(--fog);font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.navlinks{display:flex;gap:2rem;align-items:center}
+.navlinks a{color:rgba(246,244,241,.7);text-decoration:none;font-size:.82rem;letter-spacing:.04em;transition:color .3s;position:relative}
+.navlinks a:hover{color:#fff}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--crimson-bright);transition:width .35s}
+.navlinks a:hover::after{width:100%}
+.navcta{padding:.55rem 1.2rem;border:1px solid var(--line);border-radius:100px;color:#fff!important;transition:all .35s}
+.navcta:hover{background:var(--crimson);border-color:var(--crimson)}
+.navcta::after{display:none}
+@media(max-width:880px){.navlinks{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:8rem;padding-bottom:5rem;position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-photo{
+  position:absolute;inset:0;z-index:0;
+  background:url('assets/horticultural-hall.jpg') center 28%/cover no-repeat;
+  filter:grayscale(.25) contrast(1.05) brightness(.62);
+  transform:scale(1.08);
+  will-change:transform;
+}
+.hero-photo::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(7,7,8,.55) 0%,rgba(7,7,8,.35) 35%,rgba(7,7,8,.72) 78%,var(--black) 100%),
+    linear-gradient(90deg,rgba(7,7,8,.85) 0%,rgba(7,7,8,.35) 45%,transparent 75%);
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 78% 18%,rgba(212,27,44,.30),transparent 55%),
+    radial-gradient(90% 70% at 12% 95%,rgba(61,240,216,.13),transparent 50%),
+    radial-gradient(60% 60% at 50% 50%,rgba(139,125,255,.07),transparent 70%);
+  mix-blend-mode:screen;
+}
+.grid-overlay{position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:90px 90px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 78%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 78%);
+}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%}
+.ne-logo{position:absolute;top:6rem;right:clamp(1.4rem,6vw,7rem);z-index:4;height:50px;width:auto;display:block}
+@media(max-width:680px){.ne-logo{height:34px;top:5rem}}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.6rem;padding:.45rem 1rem;border:1px solid var(--line);
+  border-radius:100px;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(246,244,241,.8);margin-bottom:2.4rem;background:rgba(255,255,255,.02)
+}
+.hero-tag .pulse{width:7px;height:7px;border-radius:50%;background:var(--quantum);box-shadow:0 0 12px var(--quantum);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.hero h1{font-size:clamp(3.2rem,11vw,11.5rem);font-weight:500;line-height:.9;letter-spacing:-.04em}
+.hero h1 .it{font-style:italic;font-weight:300;color:var(--crimson-bright)}
+.hero-name{margin-top:1.4rem;font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(1.35rem,3.4vw,3rem);letter-spacing:0;line-height:1.1;color:rgba(246,244,241,.94);white-space:nowrap}
+.hero-name b{font-style:normal;font-weight:600;color:var(--crimson-bright)}
+@media(max-width:560px){.hero-name{white-space:normal}}
+.hero-sub{margin-top:1.8rem;max-width:54ch;font-size:clamp(1.05rem,1.9vw,1.5rem);font-weight:300;color:rgba(246,244,241,.82)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:2.6rem;margin-top:3.4rem;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.12em;color:var(--fog)}
+.hero-meta b{display:block;color:#fff;font-family:'Inter';font-size:1.05rem;letter-spacing:0;font-weight:600;margin-top:.25rem}
+.scrollcue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.3em;color:var(--fog);text-transform:uppercase}
+.scrollcue .bar{width:1px;height:46px;background:linear-gradient(var(--crimson-bright),transparent);animation:drop 2.2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+/* ---------- Section heads ---------- */
+.shead{max-width:76ch}
+.shead h2{font-size:clamp(1.8rem,3.6vw,3.1rem);font-weight:500;line-height:1.08}
+.shead h2 em{font-style:italic;color:var(--crimson-bright);font-weight:300}
+.shead p{margin-top:1.6rem}
+
+/* ---------- KPI counters ---------- */
+.kpi-sec{background:linear-gradient(180deg,var(--black),#0a0a0f)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:3.5rem}
+.kpi{background:var(--ink);padding:2.6rem 1.8rem;position:relative;transition:background .5s}
+.kpi:hover{background:#15151c}
+.kpi .num{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5vw,4.4rem);font-weight:500;line-height:1;letter-spacing:-.03em}
+.kpi .num .u{color:var(--crimson-bright);font-size:.5em;vertical-align:super}
+.kpi .lab{margin-top:1rem;font-size:.82rem;color:var(--fog);letter-spacing:.04em;line-height:1.4}
+.kpi .tick{font-family:'Space Mono',monospace;font-size:.66rem;color:var(--crimson-bright);letter-spacing:.2em;position:absolute;top:1.4rem;right:1.6rem}
+@media(max-width:980px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.kpi-grid{grid-template-columns:1fr}}
+
+/* ---------- Pillars ---------- */
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem}
+.pillar{border:1px solid var(--line);border-radius:18px;padding:2.6rem;background:linear-gradient(160deg,rgba(255,255,255,.025),transparent);position:relative;overflow:hidden;transition:transform .5s,border-color .5s}
+.pillar:hover{transform:translateY(-6px);border-color:rgba(212,27,44,.4)}
+.pillar .pn{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--crimson-bright);letter-spacing:.2em}
+.pillar h3{font-size:1.7rem;margin:1.1rem 0 1rem;font-weight:500}
+.pillar p{color:rgba(246,244,241,.72);font-size:.98rem}
+.pillar.q:hover{border-color:rgba(61,240,216,.5)}
+.pillar.q .pn{color:var(--quantum)}
+@media(max-width:780px){.pillars{grid-template-columns:1fr}}
+
+/* ---------- Landmark / split ---------- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+@media(max-width:880px){.split{grid-template-columns:1fr}}
+.landmark-visual{
+  aspect-ratio:4/5;border-radius:20px;position:relative;overflow:hidden;border:1px solid var(--line);
+  background:url('assets/horticultural-hall.jpg') center 30%/cover no-repeat,#0d0d12;
+}
+.landmark-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,7,8,.92),rgba(7,7,8,.05) 55%),linear-gradient(120deg,rgba(212,27,44,.12),transparent 60%)}
+.landmark-visual .stamp{position:absolute;z-index:2;bottom:1.6rem;left:1.6rem;right:1.6rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.16em;color:rgba(246,244,241,.85);text-transform:uppercase}
+.landmark-visual .stamp b{display:block;font-family:'Fraunces';font-size:1.5rem;letter-spacing:0;text-transform:none;color:#fff;margin-top:.4rem}
+
+/* ---------- Zones ---------- */
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+@media(max-width:880px){.zones{grid-template-columns:1fr}}
+.zone{border:1px solid var(--line);border-radius:18px;padding:2.4rem;position:relative;overflow:hidden;background:var(--ink);transition:transform .5s}
+.zone:hover{transform:translateY(-6px)}
+.zone .zbar{position:absolute;top:0;left:0;width:100%;height:4px}
+.zone.build .zbar{background:var(--crimson-bright)}
+.zone.collab .zbar{background:var(--quantum)}
+.zone.amp .zbar{background:var(--gold)}
+.zone h3{font-size:2rem;font-weight:600;letter-spacing:.02em;margin-bottom:.5rem}
+.zone .zsub{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;color:var(--fog);text-transform:uppercase;margin-bottom:1.4rem}
+.zone ul{list-style:none}
+.zone li{padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.92rem;color:rgba(246,244,241,.8)}
+.zone li:last-child{border:none}
+
+/* ---------- Living system layers ---------- */
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:3.5rem;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+@media(max-width:980px){.layers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.layers{grid-template-columns:1fr}}
+.layer{background:var(--ink);padding:2.4rem 1.9rem;transition:background .5s}
+.layer:hover{background:#15151c}
+.layer .ln{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--quantum);letter-spacing:.18em;margin-bottom:1rem}
+.layer h3{font-size:1.35rem;font-weight:600;margin-bottom:.9rem}
+.layer p{font-size:.9rem;color:rgba(246,244,241,.7)}
+
+/* ---------- Features ---------- */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem}
+@media(max-width:980px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.feat-grid{grid-template-columns:1fr}}
+.feat{border:1px solid var(--line);border-radius:16px;padding:2rem;background:var(--ink);position:relative;transition:transform .45s,border-color .45s}
+.feat:hover{transform:translateY(-5px);border-color:rgba(212,27,44,.4)}
+.feat .fn{font-family:'Space Mono',monospace;font-size:1.4rem;color:var(--crimson-bright);font-weight:700;opacity:.55}
+.feat h3{font-size:1.22rem;font-weight:600;margin:.6rem 0 .8rem;line-height:1.2}
+.feat p{font-size:.88rem;color:rgba(246,244,241,.7)}
+
+/* ---------- Partners ---------- */
+.partner-sec{background:linear-gradient(180deg,#0a0a0f,var(--black))}
+.partners{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.5rem}
+@media(max-width:880px){.partners{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.partners{grid-template-columns:1fr}}
+.partner{border:1px solid var(--line);border-radius:16px;padding:2.2rem;background:linear-gradient(150deg,rgba(255,255,255,.03),transparent);transition:transform .45s,border-color .45s;position:relative;overflow:hidden}
+.partner:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.28)}
+.partner .plogo{display:flex;align-items:center;gap:.65rem;height:30px;color:#fff;margin-bottom:.1rem}
+.partner .plogo svg{height:28px;width:auto;display:block;flex-shrink:0}
+.partner .plogo .wm{font-weight:700;font-size:1.35rem;letter-spacing:-.02em;color:#fff;line-height:1}
+.partner.aws .plogo svg{height:24px}
+.partner .prole{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--crimson-bright);margin:.9rem 0 1rem}
+.partner.q .prole{color:var(--quantum)}
+.partner p{font-size:.9rem;color:rgba(246,244,241,.72)}
+.partner .glow{position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(60px);top:-40px;right:-40px;opacity:.5;background:var(--crimson)}
+.partner.q .glow{background:var(--quantum)}
+
+/* ---------- Network map ---------- */
+.net-sec{background:radial-gradient(80% 90% at 50% 0%,#0e0e16,var(--black))}
+.map{position:relative;margin-top:3.5rem;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#08080c;aspect-ratio:16/8}
+.map svg{width:100%;height:100%;display:block}
+.node-dot{fill:var(--crimson-bright)}
+.node-ring{fill:none;stroke:var(--crimson-bright);stroke-width:1.2;opacity:.6}
+.hub-link{stroke:rgba(255,42,61,.5);stroke-width:2.2;fill:none}
+.campus-link{stroke:rgba(246,244,241,.22);stroke-width:1.1;fill:none;stroke-dasharray:1.5 7;stroke-linecap:round}
+.flow{stroke:url(#flowgrad);stroke-width:2;fill:none;stroke-dasharray:6 9;animation:flowmove 3s linear infinite}
+@keyframes flowmove{to{stroke-dashoffset:-30}}
+.maplabel{fill:#fff;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:1px}
+.maplabel.sub{fill:rgba(246,244,241,.5);font-size:9px}
+.map .legend{position:absolute;bottom:1.4rem;left:1.6rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--fog)}
+.citylist{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:3rem}
+.citylist .c{}
+.citylist .c b{font-family:'Fraunces';font-size:1.4rem;font-weight:500;display:block}
+.citylist .c span{font-family:'Space Mono';font-size:.72rem;letter-spacing:.12em;color:var(--fog);text-transform:uppercase}
+
+/* ---------- Timeline / roadmap ---------- */
+.timeline{margin-top:4rem;position:relative}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--crimson-bright),var(--quantum),var(--gold));opacity:.35}
+.tphase{position:relative;padding:0 0 3.5rem 3rem}
+.tphase::before{content:'';position:absolute;left:-7px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--black);border:2px solid var(--crimson-bright);box-shadow:0 0 14px var(--crimson-bright)}
+.tphase:nth-child(2)::before{border-color:var(--quantum);box-shadow:0 0 14px var(--quantum)}
+.tphase:nth-child(3)::before{border-color:var(--violet);box-shadow:0 0 14px var(--violet)}
+.tphase:nth-child(4)::before{border-color:var(--gold);box-shadow:0 0 14px var(--gold)}
+.tphase .tdate{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.2em;color:var(--crimson-bright);text-transform:uppercase}
+.tphase h3{font-size:1.9rem;font-weight:500;margin:.5rem 0 1.3rem}
+.tphase .tcols{display:grid;grid-template-columns:1fr 1.3fr;gap:2rem}
+@media(max-width:720px){.tphase .tcols{grid-template-columns:1fr}}
+.tphase .tcol h4{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);margin-bottom:.8rem}
+.tphase .tcol p{font-size:.94rem;color:rgba(246,244,241,.82)}
+
+/* ---------- Space plan table ---------- */
+.spacetable{margin-top:3.5rem;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.strow{display:grid;grid-template-columns:2.4fr 1fr 1fr 3fr;gap:1rem;padding:1.2rem 1.6rem;border-bottom:1px solid var(--line);align-items:center;transition:background .4s}
+.strow:last-child{border:none}
+.strow:hover{background:rgba(255,255,255,.03)}
+.strow.head{background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fog)}
+.strow .sp-name{font-weight:600;font-size:.98rem}
+.strow .sp-name small{display:block;font-weight:400;color:var(--fog);font-size:.78rem;margin-top:.2rem}
+.zpill{display:inline-block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;border-radius:100px;text-transform:uppercase}
+.zpill.build{background:rgba(255,42,61,.15);color:var(--crimson-bright)}
+.zpill.collab{background:rgba(61,240,216,.13);color:var(--quantum)}
+.zpill.amp{background:rgba(233,196,106,.15);color:var(--gold)}
+.strow .sp-when{font-family:'Space Mono',monospace;font-size:.82rem;color:#fff}
+.strow .sp-what{font-size:.86rem;color:rgba(246,244,241,.7)}
+@media(max-width:880px){
+  .strow{grid-template-columns:1fr 1fr;gap:.6rem}
+  .strow.head{display:none}
+  .strow .sp-what{grid-column:1/3}
+}
+
+/* ---------- Financials ---------- */
+.fin-sec{background:linear-gradient(180deg,var(--black),#0a0a0f)}
+.fin-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;margin-top:3.5rem;align-items:start}
+@media(max-width:880px){.fin-grid{grid-template-columns:1fr}}
+.budget{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.budget .brow{display:flex;justify-content:space-between;padding:.85rem 1.4rem;border-bottom:1px solid var(--line);font-size:.9rem}
+.budget .brow:last-child{border:none}
+.budget .brow span:first-child{color:rgba(246,244,241,.8)}
+.budget .brow span:last-child{font-family:'Space Mono',monospace}
+.budget .brow.total{background:rgba(212,27,44,.1);font-weight:700;font-size:1rem}
+.budget .brow.offset span:last-child{color:var(--quantum)}
+.budget .brow.net{background:rgba(255,255,255,.05);font-weight:700}
+.finstats{display:flex;flex-direction:column;gap:1.4rem}
+.finstat{border:1px solid var(--line);border-radius:16px;padding:1.8rem;background:var(--ink)}
+.finstat .fbig{font-family:'Fraunces';font-size:2.6rem;font-weight:500;line-height:1;color:var(--quantum)}
+.finstat .fbig.c{color:var(--crimson-bright)}
+.finstat .flab{margin-top:.6rem;font-size:.86rem;color:rgba(246,244,241,.72)}
+
+/* ---------- GEW days ---------- */
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:3.5rem;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+@media(max-width:980px){.days{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.days{grid-template-columns:1fr}}
+.day{background:var(--ink);padding:2rem 1.6rem;transition:background .5s}
+.day:hover{background:#15151c}
+.day .dn{font-family:'Fraunces';font-size:2.4rem;font-weight:300;color:var(--crimson-bright);line-height:1}
+.day h3{font-size:1.1rem;font-weight:600;margin:.7rem 0 .8rem}
+.day p{font-size:.83rem;color:rgba(246,244,241,.68)}
+
+/* ---------- Workstreams ---------- */
+.streams{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;margin-top:3.5rem}
+@media(max-width:780px){.streams{grid-template-columns:1fr}}
+.stream{display:flex;gap:1.4rem;border:1px solid var(--line);border-radius:14px;padding:1.7rem;background:var(--ink);transition:border-color .4s}
+.stream:hover{border-color:rgba(212,27,44,.35)}
+.stream .sno{font-family:'Space Mono',monospace;font-size:.9rem;color:var(--crimson-bright);font-weight:700;flex-shrink:0}
+.stream h3{font-size:1.15rem;font-weight:600;margin-bottom:.5rem}
+.stream p{font-size:.86rem;color:rgba(246,244,241,.7)}
+
+/* ---------- CTA ---------- */
+.cta{text-align:center;background:radial-gradient(80% 120% at 50% 0%,rgba(212,27,44,.22),transparent 60%),var(--black);padding:clamp(6rem,14vh,12rem) 1.4rem}
+.cta h2{font-size:clamp(2.2rem,5.5vw,4.6rem);font-weight:500;line-height:1.02;max-width:18ch;margin-inline:auto}
+.cta h2 em{font-style:italic;color:var(--crimson-bright);font-weight:300}
+.cta p{margin:2rem auto 3rem;max-width:46ch;font-size:1.15rem;font-weight:300;color:rgba(246,244,241,.78)}
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.2rem;border-radius:100px;background:var(--crimson);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;transition:transform .35s,background .35s;border:1px solid var(--crimson)}
+.btn:hover{transform:translateY(-3px);background:var(--crimson-bright)}
+.btn.ghost{background:transparent;border-color:var(--line);color:#fff;margin-left:1rem}
+.btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.05)}
+
+/* ---------- Footer ---------- */
+footer{padding:4rem clamp(1.4rem,6vw,7rem) 3rem;border-top:1px solid var(--line)}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;align-items:flex-end;max-width:1280px;margin:0 auto}
+.foot-grid .fbrand{font-family:'Fraunces';font-size:2rem;font-weight:500}
+.foot-grid .fmeta{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.1em;color:var(--fog);line-height:2}
+.foot-note{max-width:1280px;margin:2.5rem auto 0;font-size:.72rem;color:rgba(246,244,241,.35);letter-spacing:.04em}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
+.tag-row .t{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;padding:.45rem .9rem;border:1px solid var(--line);border-radius:100px;color:rgba(246,244,241,.7)}
+
+/* ---------- Intro / Executive Summary ---------- */
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+@media(max-width:880px){.intro-grid{grid-template-columns:1fr;gap:1.6rem}}
+.intro-grid h2{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:500;line-height:1.1}
+.intro-grid h2 em{font-style:italic;color:var(--crimson-bright);font-weight:300}
+.intro-side{padding-top:.4rem}
+/* Network emblem divider */
+.emblem-break{display:flex;align-items:center;gap:1.6rem;max-width:1280px;margin:clamp(2.1rem,4.2vw,3.6rem) auto 0;padding:0 clamp(1.4rem,6vw,7rem)}
+.emblem-break .ln{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line))}
+.emblem-break .ln.r{background:linear-gradient(90deg,var(--line),transparent)}
+.emblem-break svg{flex-shrink:0}
+.emblem-break .ring{fill:none;stroke:var(--crimson-bright);stroke-width:1}
+.emblem-break .ray{stroke:rgba(246,244,241,.35);stroke-width:1}
+.emblem-break .core{fill:var(--crimson-bright)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="brand"><span class="dot"></span>300 Mass Ave <span class="sub">/ Northeastern</span></div>
+  <div class="navlinks">
+    <a href="#opportunity">Opportunity</a>
+    <a href="#building">The Building</a>
+    <a href="#features">Features</a>
+    <a href="#partners">Partners</a>
+    <a href="#network">Network</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#launch" class="navcta">Nov 2026 Launch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <img class="ne-logo" src="assets/northeastern-wordmark.svg" alt="Northeastern University">
+  <div class="hero-content">
+    <span class="hero-tag"><span class="pulse"></span>Launching · Global Entrepreneurship Week · November 2026</span>
+    <h1>300<br>Mass <span class="it">Ave.</span></h1>
+    <p class="hero-name">The Centre for <b>Intelligent Experience &amp; Venture</b></p>
+    <p class="hero-sub">The world's first university-owned global innovation hub network — and the Boston building where its full force converges.</p>
+    <div class="hero-meta">
+      <div>Location<b>Horticultural Hall, Boston</b></div>
+      <div>Footprint<b>65,352 SF · Built 1901</b></div>
+      <div>Network<b>14 Campuses · 3 Countries</b></div>
+      <div>Operator<b>Northeastern University</b></div>
+    </div>
+  </div>
+  <div class="scrollcue"><span>Scroll</span><span class="bar"></span></div>
+</header>
+
+<!-- INTRO STATEMENT -->
+<section class="reveal" style="padding-bottom:clamp(3rem,6.6vh,6.6rem)">
+  <div class="wrap intro-grid">
+    <div>
+      <span class="eyebrow">Executive Summary</span>
+      <h2 class="serif">Where the future of education, venture, and <em>human–technology collaboration</em> radiates outward.</h2>
+    </div>
+    <div class="intro-side">
+      <p class="lede">Northeastern is building the world's first university-owned global innovation hub network — connecting students, founders, and industry at the frontier of emerging technology across 14 campuses and three countries. 300 Mass Ave is its nexus.</p>
+      <div class="tag-row">
+        <span class="t">Centre for Intelligent Experience &amp; Venture</span>
+        <span class="t">AI-Native</span>
+        <span class="t">Venture-Creation Ecosystem</span>
+        <span class="t">Quantum Capital in Residence</span>
+      </div>
+    </div>
+  </div>
+  <!-- network emblem break -->
+  <div class="emblem-break reveal d2">
+    <div class="ln"></div>
+    <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+      <g>
+        <line class="ray" x1="28" y1="28" x2="28" y2="4"/>
+        <line class="ray" x1="28" y1="28" x2="48.8" y2="16"/>
+        <line class="ray" x1="28" y1="28" x2="48.8" y2="40"/>
+        <line class="ray" x1="28" y1="28" x2="28" y2="52"/>
+        <line class="ray" x1="28" y1="28" x2="7.2" y2="40"/>
+        <line class="ray" x1="28" y1="28" x2="7.2" y2="16"/>
+      </g>
+      <g fill="rgba(246,244,241,.55)">
+        <circle cx="28" cy="4" r="2"/><circle cx="48.8" cy="16" r="2"/><circle cx="48.8" cy="40" r="2"/>
+        <circle cx="28" cy="52" r="2"/><circle cx="7.2" cy="40" r="2"/><circle cx="7.2" cy="16" r="2"/>
+      </g>
+      <circle class="ring" cx="28" cy="28" r="11">
+        <animate attributeName="r" values="9;13;9" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".8;.2;.8" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle class="core" cx="28" cy="28" r="4"/>
+    </svg>
+    <div class="ln r"></div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section class="kpi-sec" id="opportunity" style="padding-top:clamp(3rem,6.6vh,6.6rem)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">The Opportunity</span>
+      <h2 class="serif">No other university has assembled <em>what Northeastern is building.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">The moment the network becomes undeniable — measured in scale no competitor can match.</p>
+    </div>
+    <div class="kpi-grid reveal">
+      <div class="kpi"><span class="tick">FLAGSHIP HUBS</span><div class="num" data-target="5">0</div><div class="lab">Owned flagship hubs — Boston, Portland, London, Toronto, Vancouver</div></div>
+      <div class="kpi"><span class="tick">SCALE</span><div class="num" data-target="14">0</div><div class="lab">Northeastern campuses the network is built to reach</div></div>
+      <div class="kpi"><span class="tick">CO-OP PIPELINE</span><div class="num" data-target="10000" data-suffix="">0</div><div class="lab">Student placements annually — talent infrastructure</div></div>
+      <div class="kpi"><span class="tick">EMPLOYERS</span><div class="num" data-target="3000" data-suffix="+">0</div><div class="lab">Employer partners across the co-op network</div></div>
+      <div class="kpi"><span class="tick">BUILDING</span><div class="num" data-target="65352">0</div><div class="lab">Square feet of architectural significance on Mass Ave</div></div>
+      <div class="kpi"><span class="tick">QUANTUM FUND</span><div class="num"><span class="u">$</span><span data-target="100">0</span><span class="u">M</span></div><div class="lab">QBase — EdenBase's quantum fund, in residence Day 1</div></div>
+      <div class="kpi"><span class="tick">COUNTRIES</span><div class="num" data-target="3">0</div><div class="lab">Boston · London · Canada — and extending</div></div>
+      <div class="kpi"><span class="tick">HERITAGE</span><div class="num" data-target="125">0</div><div class="lab">Years Horticultural Hall has already stood</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">A Network No One Else Has</span>
+      <h2 class="serif">Each new hub makes every existing member's network <em>more valuable.</em></h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal d1">
+        <div class="pn">01 / NETWORK</div>
+        <h3>A Network No One Else Has</h3>
+        <p>Five owned flagship hubs across Boston, Portland, London, Toronto, and Vancouver. Scaling to all 14 campuses. The value compounds with every campus added — a network whose force converges at 300 Mass Ave.</p>
+      </div>
+      <div class="pillar reveal d2">
+        <div class="pn">02 / INDUSTRY</div>
+        <h3>Industry &amp; Emerging Tech Collaboration</h3>
+        <p>Named partners — NVIDIA, Microsoft, QBase and others — embed their latest technology into the building as a live, continuously evolving environment. Faculty research, student co-ops, and partner R&amp;D flow in both directions.</p>
+      </div>
+      <div class="pillar reveal d3">
+        <div class="pn">03 / TALENT</div>
+        <h3>Co-op as Talent Infrastructure</h3>
+        <p>10,000 student placements annually across 3,000+ employer partners. Every resident startup becomes a co-op employer. The six-month embedded model is more valuable to an early-stage company than any accelerator programme.</p>
+      </div>
+      <div class="pillar q reveal d4">
+        <div class="pn">04 / CAPITAL</div>
+        <h3>Quantum Capital in Residence</h3>
+        <p>QBase, EdenBase's $100M quantum fund, operates from within the building as a founding anchor partner. The only university hub in North America where active quantum investment infrastructure is a Day 1 feature.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SEVEN FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Six Firsts</span>
+      <h2 class="serif" style="white-space:nowrap">Six features <em>no other university hub</em> offers.</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal d1"><div class="fn">01</div><h3>QBase Quantum Hub + Installation</h3><p>EdenBase's $100M quantum fund operates from the Startup Hub. A kinetic data sculpture anchors the lobby. The only university hub in North America with active quantum capital in residence from Day 1.</p></div>
+      <div class="feat reveal d2"><div class="fn">02</div><h3>Northeastern Network Wall</h3><p>A live, always-on lobby display showing real-time activity across the 14-campus network: founders, events, capital raised, cross-hub connections. No other university has a live physical demonstration of a global founder network.</p></div>
+      <div class="feat reveal d3"><div class="fn">03</div><h3>AI Entrepreneurship Commons</h3><p>An open-floor intelligent working environment: AI co-creation stations, multi-screen walls, projection mapping, spatial audio. No Boston university hub has an AI-native open working environment as its ground floor.</p></div>
+      <div class="feat reveal d1"><div class="fn">04</div><h3>Soft Landing Programme</h3><p>Any Northeastern founder, resident, alumni, or student can request a desk in any hub city within 48 hours at no additional cost. Membership becomes a global product — not a Boston workspace.</p></div>
+      <div class="feat reveal d2"><div class="fn">05</div><h3>Intelligent Career Futures Hub</h3><p>AI career matching, VR interview simulation, and a startup talent marketplace — co-located with the startup community students are matched to. Physical co-location of career services with resident startups is unique in Boston.</p></div>
+      <div class="feat reveal d3"><div class="fn">06</div><h3>Library Futures Forum</h3><p>A historic double-height library with projection mapping, spatial audio, and dynamic lighting — the most architecturally and technologically distinctive event venue in Boston's university landscape.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partner-sec" id="partners">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Industry &amp; Emerging Tech</span>
+      <h2 class="serif">Named partners embed their latest technology <em>into the building.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">A live, continuously evolving environment where faculty research, student co-ops, and partner R&amp;D flow in both directions.</p>
+    </div>
+    <div class="partners">
+      <div class="partner q reveal d1"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 28 28" aria-label="QBase"><circle cx="13" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><line x1="17" y1="17" x2="23" y2="23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="22.5" cy="22.5" r="2.2" fill="currentColor"/></svg><span class="wm">QBase</span></div>
+        <div class="prole">Founding Anchor · Quantum Capital</div><p>EdenBase's $100M quantum fund, in residence from Day 1. GPU cluster, Quantum Access Studio, and the lobby's kinetic data sculpture. Formalising residency by Q3 2026.</p></div>
+      <div class="partner reveal d2"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 24 24" aria-label="NVIDIA"><path fill="currentColor" d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"/></svg><span class="wm">NVIDIA</span></div>
+        <div class="prole">Named Space · AI Studio</div><p>The NVIDIA AI Studio named space, installed Q1 FY27 within the Startup Hub. GPU compute powering the building's intelligence layer. Formal outreach begins before Board ratification.</p></div>
+      <div class="partner reveal d3"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 24 24" aria-label="Microsoft"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="13" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="13" width="10" height="10" fill="#00A4EF"/><rect x="13" y="13" width="10" height="10" fill="#FFB900"/></svg><span class="wm">Microsoft</span></div>
+        <div class="prole">Named Space · Founders Lab</div><p>The Microsoft Founders Lab named space, installed Q1 FY27. Cloud and AI tooling embedded across the resident community. A 6–12 month path from outreach to signed agreement.</p></div>
+      <div class="partner aws reveal d1"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 24 24" aria-label="Amazon Web Services"><path fill="currentColor" d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg></div>
+        <div class="prole">Credits Live at Launch</div><p>Amazon Web Services credits live for residents at launch — infrastructure for every founding company from the moment the doors open in November 2026.</p></div>
+      <div class="partner reveal d2"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 24 24" aria-label="Adobe"><path fill="currentColor" d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z"/></svg><span class="wm">Adobe</span></div>
+        <div class="prole">Creative Suite Studio</div><p>The Adobe Creative Suite powering the Founders Media Studio — broadcast-grade production, AI-assisted editing, free to all residents. Engagement Q4 2026.</p></div>
+      <div class="partner reveal d3"><div class="glow"></div>
+        <div class="plogo"><svg viewBox="0 0 24 24" aria-label="Meta"><path fill="currentColor" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg><span class="wm">Meta</span></div>
+        <div class="prole">Emerging Partner</div><p>Immersive and XR technology partner. Engagement begins Q4 2026 — extending the building's spatial, simulation, and presence capabilities.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK MAP -->
+<section class="net-sec" id="network">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">The Global Hub Network</span>
+      <h2 class="serif">Five flagship hubs, live today. <em>Built to reach 14.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">Each hub connected to the others. Each powered by the co-op pipeline. The Network Wall makes it visible in real time, from the lobby.</p>
+    </div>
+    <div class="map reveal d1">
+      <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="flowgrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3df0d8"/><stop offset="100%" stop-color="#ff2a3d"/>
+          </linearGradient>
+          <radialGradient id="globe" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#14141e"/><stop offset="100%" stop-color="#08080c"/>
+          </radialGradient>
+        </defs>
+        <rect width="1200" height="600" fill="url(#globe)"/>
+        <!-- abstract latitude/longitude grid -->
+        <g stroke="rgba(255,255,255,.05)" fill="none">
+          <ellipse cx="600" cy="300" rx="540" ry="180"/>
+          <ellipse cx="600" cy="300" rx="380" ry="240"/>
+          <ellipse cx="600" cy="300" rx="200" ry="270"/>
+          <line x1="60" y1="300" x2="1140" y2="300"/>
+          <line x1="600" y1="40" x2="600" y2="560"/>
+        </g>
+        <!-- DOTTED links: Boston to the other Northeastern campuses -->
+        <g>
+          <line class="campus-link" x1="250" y1="250" x2="600" y2="105"/>
+          <line class="campus-link" x1="250" y1="250" x2="730" y2="140"/>
+          <line class="campus-link" x1="250" y1="250" x2="560" y2="300"/>
+          <line class="campus-link" x1="250" y1="250" x2="690" y2="330"/>
+          <line class="campus-link" x1="250" y1="250" x2="560" y2="480"/>
+          <line class="campus-link" x1="250" y1="250" x2="720" y2="510"/>
+          <line class="campus-link" x1="250" y1="250" x2="910" y2="260"/>
+          <line class="campus-link" x1="250" y1="250" x2="960" y2="410"/>
+          <line class="campus-link" x1="250" y1="250" x2="1040" y2="170"/>
+        </g>
+        <!-- SOLID links: Boston to the four other flagship hubs -->
+        <g>
+          <line class="hub-link" x1="250" y1="250" x2="840" y2="175"/>
+          <line class="hub-link" x1="250" y1="250" x2="370" y2="455"/>
+          <line class="hub-link" x1="250" y1="250" x2="150" y2="395"/>
+          <line class="hub-link" x1="250" y1="250" x2="470" y2="120"/>
+          <line class="flow" x1="250" y1="250" x2="840" y2="175"/>
+          <line class="flow" x1="250" y1="250" x2="370" y2="455"/>
+          <line class="flow" x1="250" y1="250" x2="150" y2="395"/>
+          <line class="flow" x1="250" y1="250" x2="470" y2="120"/>
+        </g>
+        <!-- other campus nodes (dim) -->
+        <g fill="rgba(246,244,241,.55)">
+          <circle cx="600" cy="105" r="4"/><circle cx="730" cy="140" r="4"/>
+          <circle cx="560" cy="300" r="4"/><circle cx="690" cy="330" r="4"/><circle cx="560" cy="480" r="4"/>
+          <circle cx="720" cy="510" r="4"/><circle cx="910" cy="260" r="4"/><circle cx="960" cy="410" r="4"/>
+          <circle cx="1040" cy="170" r="4"/>
+        </g>
+        <!-- campus labels -->
+        <g class="maplabel sub" text-anchor="middle" fill="rgba(246,244,241,.72)">
+          <text x="600" y="90">SEATTLE</text>
+          <text x="730" y="125">BURLINGTON</text>
+          <text x="1040" y="155">NAHANT</text>
+          <text x="910" y="245">ARLINGTON</text>
+          <text x="560" y="320">SAN FRANCISCO</text>
+          <text x="690" y="350">OAKLAND</text>
+          <text x="960" y="430">CHARLOTTE</text>
+          <text x="560" y="500">SAN JOSE</text>
+          <text x="720" y="530">MIAMI</text>
+        </g>
+        <!-- flagship hub nodes -->
+        <!-- London -->
+        <g><circle class="node-dot" cx="840" cy="175" r="7"/><circle class="node-ring" cx="840" cy="175" r="13"/><text class="maplabel" x="840" y="153" text-anchor="middle">LONDON</text></g>
+        <!-- Toronto -->
+        <g><circle class="node-dot" cx="370" cy="455" r="7"/><circle class="node-ring" cx="370" cy="455" r="13"/><text class="maplabel" x="370" y="487" text-anchor="middle">TORONTO</text></g>
+        <!-- Vancouver -->
+        <g><circle class="node-dot" cx="150" cy="395" r="7"/><circle class="node-ring" cx="150" cy="395" r="13"/><text class="maplabel" x="150" y="427" text-anchor="middle">VANCOUVER</text></g>
+        <!-- Portland — The Roux Institute (live) -->
+        <g><circle class="node-dot" cx="470" cy="120" r="7"/><circle class="node-ring" cx="470" cy="120" r="13"/><text class="maplabel" x="470" y="100" text-anchor="middle">PORTLAND</text><text class="maplabel sub" x="470" y="148" text-anchor="middle">THE ROUX INSTITUTE</text></g>
+        <!-- Boston (nexus) drawn last, on top -->
+        <g>
+          <circle class="node-ring" cx="250" cy="250" r="26"><animate attributeName="r" values="14;30;14" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite"/></circle>
+          <circle cx="250" cy="250" r="10" fill="#ff2a3d"/>
+          <text class="maplabel" x="250" y="216" text-anchor="middle">BOSTON</text>
+          <text class="maplabel sub" x="250" y="232" text-anchor="middle">300 MASS AVE · NEXUS</text>
+        </g>
+      </svg>
+      <div class="legend">━━ Flagship hub (live) &nbsp;&nbsp; ┄┄ Northeastern campus &nbsp;&nbsp; ● Boston · nexus</div>
+    </div>
+    <div class="citylist reveal d2">
+      <div class="c"><b>Boston</b><span>Nexus · 300 Mass Ave</span></div>
+      <div class="c"><b>Portland</b><span>Flagship · The Roux</span></div>
+      <div class="c"><b>London</b><span>Flagship · Live</span></div>
+      <div class="c"><b>Toronto</b><span>Flagship · Live</span></div>
+      <div class="c"><b>Vancouver</b><span>Flagship · Live</span></div>
+      <div class="c"><b>+9</b><span>Campuses · In Architecture</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- GEW LAUNCH -->
+<section id="launch">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Global Entrepreneurship Week</span>
+      <h2 class="serif">Five days to show the world <em>the full scope.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">The Centre launches during Global Entrepreneurship Week, November 2026 — the network, the technology, and the community, demonstrated to the world.</p>
+    </div>
+    <div class="days">
+      <div class="day reveal d1"><div class="dn">01</div><h3>Doors Open</h3><p>Community open house. The space, the people, the Network Wall live publicly for the first time. QBase Installation lit. Press access all day.</p></div>
+      <div class="day reveal d2"><div class="dn">02</div><h3>Founder Day</h3><p>All-day programme. VCs only in the morning; public from midday. AI Collaboration Commons demonstrated. Media Studio shown to press.</p></div>
+      <div class="day reveal d3"><div class="dn">03</div><h3>Global Network Day</h3><p>Live-connected event with Portland, London, Vancouver, and Toronto. The 14-campus network visible in real time. Investor panel across all hub cities.</p></div>
+      <div class="day reveal d4"><div class="dn">04</div><h3>AI &amp; Student Innovation</h3><p>Student AI project showcases. Open Innovation Challenge launch. Co-op matchmaking with resident companies.</p></div>
+      <div class="day reveal d5"><div class="dn">05</div><h3>Partner &amp; Donor Evening</h3><p>Invitation-only. Phase 2 vision previewed. Target: $500K in Phase 2 pledges.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP / TIMELINE -->
+<section id="roadmap" style="background:linear-gradient(180deg,var(--black),#0a0a0f)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Three-Year Phasing</span>
+      <h2 class="serif">The road to <em>2029.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">From launch through full realisation — each phase unlocking new spaces, deepening technology, and growing the resident community.</p>
+    </div>
+    <div class="timeline">
+      <div class="tphase reveal d1">
+        <div class="tdate">Nov 2026 — Launch</div>
+        <h3 class="serif">The Doors Open</h3>
+        <div class="tcols">
+          <div class="tcol"><h4>New Spaces</h4><p>Startup Hub · Intelligent Entry Lobby · AI Entrepreneurship Commons · Advancement Suite.</p></div>
+          <div class="tcol"><h4>Milestones</h4><p>GEW launch. 10–15 founding residents. QBase operational. First investor evening. Network Wall and QBase Installation live.</p></div>
+        </div>
+      </div>
+      <div class="tphase reveal d2">
+        <div class="tdate" style="color:var(--quantum)">FY27 — Complete</div>
+        <h3 class="serif">The Floor Fills In</h3>
+        <div class="tcols">
+          <div class="tcol"><h4>New Spaces</h4><p>Founders Media Studio (Q1) · Mezzanine (Q2) · Career Futures Hub (Q1–Q2).</p></div>
+          <div class="tcol"><h4>Milestones</h4><p>NVIDIA AI Studio and Microsoft Founders Lab named spaces installed. First Annual Startup Report. 20 residents. 15+ co-ops. Phase 2 capital request prepared.</p></div>
+        </div>
+      </div>
+      <div class="tphase reveal d3">
+        <div class="tdate" style="color:var(--violet)">FY28 — Deepen</div>
+        <h3 class="serif">The Building Thinks Deeper</h3>
+        <div class="tcols">
+          <div class="tcol"><h4>New Spaces</h4><p>Phase 2 construction begins: Library Futures Forum + Intelligent Systems Experience Studio.</p></div>
+          <div class="tcol"><h4>Milestones</h4><p>First AI Futures Summit. 25 residents. 35+ co-ops. 4+ technology partners. GPU cluster upgraded. Full digital twin upgrade.</p></div>
+        </div>
+      </div>
+      <div class="tphase reveal d4">
+        <div class="tdate" style="color:var(--gold)">FY29 — Complete</div>
+        <h3 class="serif">The Living System, Fully Realised</h3>
+        <div class="tcols">
+          <div class="tcol"><h4>New Spaces</h4><p>Library Futures Forum open. Intelligent Systems Experience Studio open with Quantum Access Studio.</p></div>
+          <div class="tcol"><h4>Milestones</h4><p>Building as a Living System fully realised. QBase North American operations established. Top 10 US university hub in national press. 30–35 residents. 60+ co-ops. Global Founder Summit.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="divider"></div>
+
+<!-- THE BUILDING -->
+<section id="building">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">300 Mass Ave</span>
+      <h2 class="serif" style="font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:500">A Historic Landmark, <em>Reimagined.</em></h2>
+      <p class="lede" style="margin-top:1.6rem">Horticultural Hall — English Renaissance Revival, built 1901, opposite Symphony Hall — is one of Boston's most architecturally significant buildings.</p>
+      <p style="margin-top:1.4rem;color:rgba(246,244,241,.72)">The contrast between its historic architecture and the intelligent systems layer installed within it is not a compromise. It is the defining experience of the Centre: an institution confident enough in its future to house it in a building that has already stood for 125 years.</p>
+    </div>
+    <div class="landmark-visual reveal d2">
+      <div class="stamp">Horticultural Hall · Est. 1901<b>300 Massachusetts Avenue</b></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:6rem">
+    <div class="shead reveal"><span class="eyebrow">Three Zones. One Ecosystem.</span></div>
+    <div class="zones">
+      <div class="zone build reveal d1"><div class="zbar"></div>
+        <h3>BUILD</h3><div class="zsub">Where ideas become ventures</div>
+        <ul><li>AI Collaboration Commons</li><li>Startup Hub</li><li>Founders Media Studio</li><li>Intelligent Systems Experience Studio</li></ul>
+      </div>
+      <div class="zone collab reveal d2"><div class="zbar"></div>
+        <h3>COLLABORATE</h3><div class="zsub">Where people and ideas converge</div>
+        <ul><li>AI Entrepreneurship Commons</li><li>Career Futures Hub</li><li>Mezzanine</li><li>Venture Education Studios</li></ul>
+      </div>
+      <div class="zone amp reveal d3"><div class="zbar"></div>
+        <h3>AMPLIFY</h3><div class="zsub">Where the network speaks</div>
+        <ul><li>Intelligent Entry Lobby</li><li>Network Wall</li><li>Library Futures Forum</li><li>Street-visible studios</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="reveal">
+    <span class="eyebrow">November 2026</span>
+    <h2 class="serif">The most ambitious university innovation environment <em>in the world.</em></h2>
+    <p>300 Mass Ave is not the start of the network. It is the moment the network becomes undeniable.</p>
+    <div>
+      <a href="#opportunity" class="btn">Explore the Vision →</a>
+      <a href="#launch" class="btn ghost">The Launch Week</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <img src="assets/northeastern-wordmark.svg" alt="Northeastern University" style="height:46px;width:auto;display:block;margin-bottom:1.4rem">
+      <div class="fbrand">300 Mass Ave</div>
+      <div class="fmeta">Centre for Intelligent Experience &amp; Venture (working name)<br>Northeastern University · Global Innovation Hub Network</div>
+    </div>
+    <div class="fmeta" style="text-align:right">
+      Horticultural Hall · 300 Massachusetts Avenue, Boston<br>
+      Boston · Portland · London · Toronto · Vancouver · +9<br>
+      Launching November 2026
+    </div>
+  </div>
+  <div class="foot-note">Executive Summary. Figures, dates, and partner commitments reflect the planning-stage proposal and are subject to Board ratification. Working name pending brand confirmation. Building photograph of Horticultural Hall via Wikimedia Commons (CC).</div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// Scroll reveal
+const ro=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
+},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Animated counters
+function formatNum(n,suffix){
+  return n.toLocaleString('en-US')+(suffix||'');
+}
+const counters=document.querySelectorAll('[data-target]');
+const co=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    const target=+el.dataset.target;
+    const suffix=el.dataset.suffix||'';
+    const dur=1600, start=performance.now();
+    function tick(now){
+      const p=Math.min((now-start)/dur,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=formatNum(Math.round(target*eased),p===1?suffix:'');
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    co.unobserve(el);
+  });
+},{threshold:.5});
+counters.forEach(c=>co.observe(c));
+
+// Parallax drift on hero photo (kept scaled so edges never reveal)
+const heroPhoto=document.querySelector('.hero-photo');
+const heroGrid=document.querySelector('.grid-overlay');
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  if(y<window.innerHeight){
+    heroPhoto.style.transform=`scale(1.08) translateY(${y*0.18}px)`;
+    heroGrid.style.transform=`translateY(${y*0.32}px)`;
+  }
+},{passive:true});
+</script>
+</body>
+</html>
